@@ -1,0 +1,8 @@
+1.该项目采用retrofit2.0+rxjava+rxandroid+MVP+dagger2+material design
+2.用到的库
+1.网络：retrofit2.0
+  图片：glide
+  组件通信：eventbus
+  内存检测：leakcanary
+  material design：导入design包
+
