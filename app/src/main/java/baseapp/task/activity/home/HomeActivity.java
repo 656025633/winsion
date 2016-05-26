@@ -1,10 +1,14 @@
 package baseapp.task.activity.home;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import baseapp.R;
 import baseapp.task.BaseActivity;
+import baseapp.task.activity.preference.MyPeferenceActivity;
 import baseapp.utils.T;
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -14,6 +18,8 @@ public class HomeActivity extends BaseActivity implements HomeContract.View {
 
     @Bind(R.id.content)
     TextView mContent;
+    @Bind(R.id.button)
+    Button mButton;
     private HomePresent mPresent;
 
     @Override
@@ -39,7 +45,12 @@ public class HomeActivity extends BaseActivity implements HomeContract.View {
 
     @Override
     protected void initListener() {
-
+        mButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this,MyPeferenceActivity.class));
+            }
+        });
     }
 
     @Override
@@ -49,8 +60,6 @@ public class HomeActivity extends BaseActivity implements HomeContract.View {
         mPresent.attachView(this);
         //调用persenter层获取数据
         mPresent.loadData();
-
-
 
     }
 
@@ -68,6 +77,5 @@ public class HomeActivity extends BaseActivity implements HomeContract.View {
     @Override
     public void loadSuccess(String title) {
         mContent.setText(title);
-
     }
 }
